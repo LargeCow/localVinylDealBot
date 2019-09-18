@@ -56,4 +56,15 @@ ARTISTS = [
     'sza',
     'odd future',
     'RZA',
-    'allen stone']
+    'allen stone',
+    'Three 6 mafia',
+    'JPEGMAFIA',
+    'jpeg mafia', 
+    'Justice', 
+    'Daft punk',
+    'daftpunk', 
+    'playboi carti',
+    'mike',
+    'grateful dead',
+    'slipknot',
+    'toro y moi']
