@@ -10,7 +10,7 @@ import praw
 
 now = dt.now()
 
-logging.basicConfig(filename=f'vinyl-deal-bot-logs-{now.year}-{now.month}-{now.day}.log',
+logging.basicConfig(filename='vinyl-deal-bot-logs-{0}-{1}-{2}.log'.format(now.year, now.month, now.day),
                     level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
@@ -79,12 +79,12 @@ class daemon:
             with open(self.pidfile, 'r') as pf:
 
                 pid = int(pf.read().strip())
-                logging.info(f'Found pidfile {self.pidfile}')
+                logging.info('Found pidfile {0}'.format(self.pidfile))
         except IOError:
             pid = None
 
         if pid:
-            logging.critical(f'pidfile {self.pidfile} already exists. Is the daemon already running?')
+            logging.critical('pidfile {0} already exists. Is the daemon already running?'.format(self.pidfile))
             sys.exit(1)
 
         # Start the daemon
@@ -104,7 +104,7 @@ class daemon:
             pid = None
 
         if not pid:
-            logging.critical(f'Could not locate pidfile {self.pidfile}')
+            logging.critical('Could not locate pidfile {0}'.format(self.pidfile))
             return  # not an error in a restart
 
         # Try killing the daemon process
