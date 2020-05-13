@@ -17,12 +17,12 @@ def title_contains_artist(artist, title):
 def send_message(client, user, deal, artist):
     try:
         title = deal.title
-        message = f'Hey looks like there is a new deal on {artist}!\n\n' \
-                  f'[{title}](https://reddit.com{deal.permalink})'
+        message = 'Hey looks like there is a new deal on {0}!\n\n'.format(artist) \
+                  '[{0}](https://reddit.com{1})'.format(title, deal.permalink)
         client.redditor(user).message(title, message)
-        logging.info(f'Message successfully sent regarding the deal {title}')
+        logging.info('Message successfully sent regarding the deal {0}'.format(title))
     except Exception as e:
-        logging.warning(f'Unable to send a message regarding the deal {title}')
+        logging.warning('Unable to send a message regarding the deal {0}'.format(title))
         logging.info(e)
         return False
 
@@ -33,4 +33,4 @@ def run_bot(client, artists):
         for deal in subreddit.stream.submissions():
             title = deal.title.replace('Lowest', '', 1)
             for artist in artists:
-                send_message(client, config.endUser, deal, artist) and logging.info(f'Found a deal on {title}') if title_contains_artist(artist, title.lower()) else None
+                send_message(client, config.endUser, deal, artist) and logging.info('Found a deal on {0}'.format(title)) if title_contains_artist(artist, title.lower()) else None
